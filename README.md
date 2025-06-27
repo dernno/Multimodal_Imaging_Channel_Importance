@@ -36,8 +36,8 @@ The train.py module implements the core training pipeline. It supports four conf
   2) Mixup only 
   3) Patient weighting only
   4) Mixup combined with patient weighting
-- Integrates mixup data augmentation to improve generalization (Mixup creates synthetic training samples by combining pairs of images and their labels using a convex linear combination, encouraging the model to learn smoother decision boundaries)
-- Allows patient-level weighting to correct for potential bias in patient sampling e.g., {'05': 0.67, '07': 0.03, '09': 0.13, '15': 0.08, '16': 0.08} (Sum to 1)
+- Mixup data augmentation creates synthetic training samples by combining pairs of images and their labels using a convex linear combination, encouraging the model to learn smoother decision boundaries
+- Patient-level weighting to correct for potential bias in patient sampling e.g., {'05': 0.67, '07': 0.03, '09': 0.13, '15': 0.08, '16': 0.08} (Sum to 1) based on number of images
 
 The module uses standard binary cross-entropy loss with optional class balancing and patient weighting. Validation and test performance are monitored per epoch.
 
