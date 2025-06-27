@@ -368,21 +368,21 @@ all_patch_counts = np.array([
 
 def get_normalized_patient_weights(patient_ids):
     """
-    Gibt ein Dictionary mit normalisierten Gewichten für eine Teilmenge von Patienten zurück.
+    Returns a dictionary with normalized weights for a subset of patients.
 
     Args:
-        patient_ids (list[int]): Liste von Patienten-IDs (1-basiert, z. B. [1, 4, 5, 6])
+        patient_ids (list[int]): List of patient IDs (1-based, e.g., [1, 4, 5, 6])
 
     Returns:
-        dict[str, float]: Mapping von Patient-ID als '02'-String → normalisiertes Gewicht
+        dict[str, float]: Mapping from patient ID as '02'-formatted string → normalized weight
     """
-    # Hole Patch-Zahlen für diese Patienten
+    # Get patch counts for the selected patients
     selected_counts = {pid: all_patch_counts[pid - 1] for pid in patient_ids}
     
-    # Schritt 1: Inverse Patch-Zahlen
+    # Step 1: Calculate inverse patch counts
     inv_counts = {pid: 1.0 / count for pid, count in selected_counts.items()}
 
-    # Schritt 2: Normalisieren auf Summe 1
+    # Step 2: Normalize so that the weights sum to 1
     total_inv = sum(inv_counts.values())
     normalized_weights = {
         f"{pid:02d}": inv / total_inv for pid, inv in inv_counts.items()
