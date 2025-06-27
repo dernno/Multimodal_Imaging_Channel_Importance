@@ -24,8 +24,8 @@ This module defines the MultiModalCancerDataset:
 - Reads normalization parameters (mean/std) dynamically from a JSON configuration
 - Implements flexible input normalization schemes (standard z-score, clipped z-score, log transform, contrast stretching)
 - Includes data augmentation for BF and FL images with configurable strategies
-- Dynamic channel removal for ablation experiements
-- Dynamic channel masking for occlusion experiments
+- Dynamic channel removal for ablation experiments (e.g., self.used_channels="0123" removes channels 4,5,6)
+- Dynamic channel masking for occlusion experiments (e.g., self.not_masked_channels="0123" sets channels 4,5,6 to zero)
 - Returns dictionary containing: transformed image tensor, label (0 or 1), slide identifier (e.g. 01), patch identifier (e.g. 2044)
 
 ### train.py
