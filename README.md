@@ -41,8 +41,15 @@ The train.py module implements the core training pipeline. It supports four conf
 
 The module uses standard binary cross-entropy loss with optional class balancing and patient weighting. Validation and test performance are monitored per epoch.
 
+## folds
+Four different fold configurations are provided:
+- p123: Partitions 1–3
+- p456: Partitions 4–6
+- p12345: 5-fold partition across all data
+- wenyi: original letitshine partition with 14 patients in the evaluation set
 
+Each of these configurations additionally supports stratified subsampling options:
 
-
-
-
+- suffix _5: uses only 5% of the data
+- suffix _20: uses 20% of the data
+- no suffix: uses 100% of the data
