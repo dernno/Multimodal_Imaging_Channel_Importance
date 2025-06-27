@@ -3,6 +3,22 @@ Implementation for MA Thesis: Evaluating channel importance in CNN-based classif
 
 MIDA Group. LetItShine: Multimodal image analysis codebase, https://github.com/MIDA-group/LetItShine serves as the initial codebase and is substantially extended to incorporate methodological improvements (patient weighting, dynamic class weighting, as well as channel importance analysis tools (ablation, occlusion, integrated-gradients)).
 
+## Example Channels
+
+**Brightfield Channels**
+
+![BF_C0](images/BF_C0.png)
+![BF_C1](images/BF_C1.png)
+![BF_C2](images/BF_C2.png)
+
+**Fluorescence Channels**
+
+![FL_C3](images/FL_C3.png)
+![FL_C4](images/FL_C4.png)
+![FL_C5](images/FL_C5.png)
+![FL_C6](images/FL_C6.png)
+
+
 ## main.py
 The main.py script orchestrates a cross-validation setup (default: 3 folds) for multimodal image classification. It supports multiple processing modes, including:
 - MM (Multimodal): (E) Early Fusion: combines all modalities at the input level (7-channel input)
