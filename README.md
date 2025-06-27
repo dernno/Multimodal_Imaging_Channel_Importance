@@ -55,6 +55,6 @@ Each of these configurations additionally supports stratified subsampling option
 - no suffix: uses 100% of the data
 
 ## sampling/sample_slide.ipynb
-custom data reduction strategy generates mutually exclusive e.g. 20% (dynamic) subsets using stratified random sampling per slide, preserving class balance and patient slide allocation. 
+Custom data reduction strategy generates mutually exclusive e.g. 20% (dynamic) subsets using stratified random sampling per slide, preserving class balance and patient slide allocation. 
 
 
