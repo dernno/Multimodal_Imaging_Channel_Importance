@@ -1,5 +1,5 @@
 # MA_Nora_Channel_Importance
-Implementation for MA Thesis: Evaluating channel importance in CNN-based classification of oral cancer cytology using perfectly aligned brightfield–fluorescence image pairs from Pap-stained whole-slide images (patch size 256 × 256).
+Implementation for MA Thesis: Evaluating channel importance in CNN-based classification of oral cancer cytology using perfectly aligned brightfield–fluorescence image pairs from Pap-stained whole-slide images (patch size 256 × 256 pixel).
 
 MIDA Group. LetItShine: Multimodal image analysis codebase, https://github.com/MIDA-group/LetItShine, Accessed: 2025-06-05 serves as the initial codebase and is substantially extended to incorporate the proposed methodological improvements.
 
@@ -53,3 +53,8 @@ Each of these configurations additionally supports stratified subsampling option
 - suffix _5: uses only 5% of the data
 - suffix _20: uses 20% of the data
 - no suffix: uses 100% of the data
+
+## sampling/sample_slide.ipynb
+custom data reduction strategy generates mutually exclusive e.g. 20% (dynamic) subsets using stratified random sampling per slide, preserving class balance and patient slide allocation. 
+
+
