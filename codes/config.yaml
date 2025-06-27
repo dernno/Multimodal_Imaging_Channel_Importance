@@ -1,0 +1,35 @@
+program: main.py
+
+method: random  # oder bayes, wenn du willst
+
+metric:
+  name: Train/Loss #Validation/Loss  # Du loggst val loss und test f1 separat -> hier sinnvoll Val Loss
+  goal: minimize
+
+project: alvis-sweep-loss
+
+parameters:
+  lr:
+    distribution: log_uniform
+    min: 1e-5
+    max: 5e-4
+
+  wd:
+    distribution: uniform
+    min: 0.0
+    max: 0.3
+
+  batch_size:
+    values: [64, 128, 256]
+
+  epochs:
+    values: [30, 40, 50]
+
+#  mixup:
+#    values: [True, False]
+
+#  pretrained:
+#    values: [True, False]
+
+  optimizer:
+    values: ["adamw", "adam", "sgd"]
