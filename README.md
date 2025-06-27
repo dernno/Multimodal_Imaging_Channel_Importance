@@ -16,7 +16,7 @@ For each fold, the script reads patient slide assignments for training, validati
 
 For the training data, class weights are computed to account for label imbalance between class 0 (benign) and class 1 (malignant slide). The script then creates dataloaders (based on the MultimodalDataset implemented in data/dataloader.py) for training, validation, and test data.
 
-Model architectures are instantiated from archs/network.py based on the chosen modality (MM(E/L), BF, FL).
+Model architectures are instantiated from archs/network.py based on the chosen modality (MM(E: One 7-Input ResNet, L: Two ResNets combined before FC, BF: One 3-Input ResNet, FL: One 4-Input ResNet).
 
 Finally, the standard training (train.py) and evaluation (test.py) routines are executed for each fold.
 
