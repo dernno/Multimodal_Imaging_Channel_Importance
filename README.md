@@ -20,7 +20,7 @@ MIDA Group. LetItShine: Multimodal image analysis codebase, https://github.com/M
 
 
 ## main.py
-The main.py script orchestrates a cross-validation setup (default: 3 folds) for multimodal image classification. It supports multiple processing modes, including:
+The main.py script implementes a cross-validation setup (default: 3 folds) for multimodal image classification. It iterates through each fold in a for-loop, training and evaluating the model independently for each fold. It supports multiple processing modes, including:
 - MM (Multimodal): (E) Early Fusion: combines all modalities at the input level (7-channel input)
 - MM (Multimodal): (L) Late Fusion: keeps the modalities fully separated throughout the entire feature extraction stage. Each modality is passed through an independent backbone network (3 + 7-3 channel input)
 - BF: BF only (3-channel input)
