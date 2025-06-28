@@ -63,9 +63,9 @@ parser.add_argument('--wd', type=float, default=0.1, help='weight decay')
 parser.add_argument('--model_arch_name', default='resnet50', help='[resnet50] for single model, [cafnet, embnet, fusionm4net, mmtm] for intermediate fusion')
 
 # NOT OPTIONAL!! 
-parser.add_argument('--mode', type=str, default='MM', help='[BF, FL, MM], MM means multi-modal inputs') #default='MM',
+parser.add_argument('--mode', type=str, default='MM', help='[BF, FL, MM], MM means multi-modal inputs')
 
-parser.add_argument('--channel', type=int, default=7, help='3 for BF, 4 for FL, 7 for MM') #default=7,
+parser.add_argument('--channel', type=int, default=7, help='3 for BF, 4 for FL, 7 for MM')
 ### MM
 parser.add_argument('--fusion_mode', type=str, default='E', help='[E,L,I]')
 
@@ -73,7 +73,6 @@ parser.add_argument('--fold', type=int, default=None, help='fold number: [0, 1, 
 #parser.add_argument('--mixup', type= bool, default=True, help='Whether to use the mixup augmentation')
 parser.add_argument('--mixup', action='store_true', help='Use mixup augmentation')
 parser.add_argument('--weighted_patients', action='store_true', help='Use weighted patients (loss + eval)')
-#parser.add_argument('--retrain', action='store_true', help='Whether to retrain with validation set') ################# [TO DO] change approach
 parser.add_argument('--split_mode', type = str, default = "train_test", help= '"train_val_test" or "train_test"')
 parser.add_argument('--pretrained', type=bool, default=True, help='Whether to use pretrained model')
 parser.add_argument('--freeze', action='store_true', help='Whether to freeze weights')
