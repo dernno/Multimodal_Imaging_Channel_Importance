@@ -40,13 +40,13 @@ torch.backends.cudnn.benchmark = False
 ###############
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--path_to_folds', default='/mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/folds/FINAL_FOLDS/wenyi_5' )
-parser.add_argument('--path_to_images', default='/mimer/NOBACKUP/groups/snic2021-7-128/nora/data')
+parser.add_argument('--path_to_folds', default='/folds/wenyi_5' )
+parser.add_argument('--path_to_images', default='/data')
 
 parser.add_argument('--project_name', type=str, default='sweep', help='Choose poject name for wandb')
 
 
-parser.add_argument('--crop_size', type=int, default=224) #change crop size to 224x224,shift
+parser.add_argument('--crop_size', type=int, default=224) 
 parser.add_argument('--epochs', type=int, default=30)
 parser.add_argument('--batch_size', type=int, default=256)
 parser.add_argument('--lr', type=float, default=8e-5)
@@ -71,13 +71,13 @@ parser.add_argument('--pretrained', type=bool, default=True, help='Whether to us
 parser.add_argument('--freeze', action='store_true', help='Whether to freeze weights')
 parser.add_argument('--optimizer', type=str, default='adamw')
 
-parser.add_argument('--server', type=str, default='alvis',help='mida1 or mida2')
+parser.add_argument('--server', type=str, default='server',help='server name for log dir name')
 
 parser.add_argument('--used_channels', type=str, default=None, help='Combination: [4, 5, 6] channels in total')
 parser.add_argument('--note', type=str, default='note', help='Extra Info for run')
 
 parser.add_argument('--group_partition_name', type=str, default='wenyi', help='wenyi, partition123, partition456')
-parser.add_argument('--norm_config_path', type=str, default='/mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/codes/input_norm/norm_config.json', help='jsonfile')
+parser.add_argument('--norm_config_path', type=str, default='/codes/input_normalization/norm_config.json', help='jsonfile')
 #parser.add_argument('--analyse_inputs', action='store_true', help='Analyze_inputs')
 parser.add_argument('--input_norm', type=str, default = 'zscore')
 
@@ -88,19 +88,13 @@ parser.add_argument('--not_masked_channels', type=str, default=None, help='[0123
 
 def main(args):
     start_time = time.time()
-
-    if args.server == 'mida1':
-        log_dir = '/home/nora/data2_nora'
-    elif args.server == 'alvis':
-        log_dir = '/mimer/NOBACKUP/groups/snic2021-7-128/nora'
-    else:
-        log_dir = '/home/nora/work_nora'  # mida2
+    log_dir = '/home/nora' 
 
     for i in range(3):#3
         if i != args.fold:
            continue
         ####
-        # nur fold2-3   
+        # only fold2-3   
         #if i == 0: #or i == 1:
         #    continue 
 

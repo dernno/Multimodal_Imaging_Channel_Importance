@@ -27,7 +27,7 @@ def main(args):
     ])
 
     # Load dataset
-    dataset = datasets.ImageFolder(root='/mimer/NOBACKUP/groups/snic2021-7-128/nora/data/FL', transform=transform)
+    dataset = datasets.ImageFolder(root='/data/FL', transform=transform)
 
     # Get all available class (folder) names
     all_classes = dataset.classes

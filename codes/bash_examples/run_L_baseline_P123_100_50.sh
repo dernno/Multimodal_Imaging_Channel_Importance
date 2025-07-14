@@ -1,18 +1,15 @@
 #!/bin/bash
-#SBATCH -A NAISS2024-22-1260   # Ersetze mit deinem Projekt-Konto auf Snowy
-#SBATCH -t 6-00:00:00     # 4 Tage, 0 Stunden, 0 Minuten
+#SBATCH -A projectname
+#SBATCH -t 6-00:00:00   
 #SBATCH --gres=gpu:A100:1
-#SBATCH --output=/mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/out/Baseline_P123_100_ResNet50%j.out
+#SBATCH --output=/out/Baseline_P123_100_ResNet50%j.out
 
-# Lade das Python-Modul, falls erforderlich
 module load Python/3.11.5-GCCcore-13.2.0
+source /nora_env/bin/activate
 
-# Aktiviere die virtuelle Umgebung
-source /mimer/NOBACKUP/groups/snic2021-7-128/nora/nora_env/bin/activate  # Pfad zu deiner venv
-
-python /mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/codes/main.py \
-	--path_to_folds '/mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/folds/FINAL_FOLDS/p123' \
-	--path_to_images '/mimer/NOBACKUP/groups/snic2021-7-128/nora/data'\
+python /codes/main.py \
+	--path_to_folds '/folds/p123' \
+	--path_to_images '/data'\
 	--mode MM --fusion_mode L --channel 7 --mixup --split_mode "train_test" --pretrained True --batch_size 128 \
 	--project_name 'Baseline_P123_100_ResNet50' \
 	--server alvis \

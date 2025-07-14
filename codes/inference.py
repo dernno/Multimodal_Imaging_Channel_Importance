@@ -43,23 +43,20 @@ torch.backends.cudnn.benchmark = False
 ###############
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--path_to_folds', default='/mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/folds/FINAL_FOLDS/wenyi_5' )
-parser.add_argument('--path_to_images', default='/mimer/NOBACKUP/groups/snic2021-7-128/nora/data')
+parser.add_argument('--path_to_folds', default='/folds/wenyi_5' )
+parser.add_argument('--path_to_images', default='/nora/data')
 
 parser.add_argument('--project_name', type=str, default='sweep', help='Choose poject name for wandb')
 
 
-parser.add_argument('--crop_size', type=int, default=224) #change crop size to 224x224,shift
+parser.add_argument('--crop_size', type=int, default=224) 
 parser.add_argument('--epochs', type=int, default=30)
 parser.add_argument('--batch_size', type=int, default=256)
 parser.add_argument('--lr', type=float, default=8e-5)
 parser.add_argument('--wd', type=float, default=0.1, help='weight decay')
 
 parser.add_argument('--model_arch_name', default='resnet50', help='[resnet50] for single model, [cafnet, embnet, fusionm4net, mmtm] for intermediate fusion')
-
-# NOT OPTIONAL!! 
 parser.add_argument('--mode', type=str, default='MM', help='[BF, FL, MM], MM means multi-modal inputs') #default='MM',
-
 parser.add_argument('--channel', type=int, default=7, help='3 for BF, 4 for FL, 7 for MM') #default=7,
 ### MM
 parser.add_argument('--fusion_mode', type=str, default='E', help='[E,L,I]')
@@ -75,20 +72,17 @@ parser.add_argument('--freeze', action='store_true', help='Whether to freeze wei
 parser.add_argument('--optimizer', type=str, default='adamw')
 
 parser.add_argument('--server', type=str, default='alvis',help='mida1 or mida2')
-
 parser.add_argument('--used_channels', type=str, default=None, help='Combination: [4, 5, 6] channels in total')
 parser.add_argument('--note', type=str, default='default', help='Extra Info for run')
-
 parser.add_argument('--group_partition_name', type=str, default='wenyi', help='wenyi, partition123, partition456')
-parser.add_argument('--norm_config_path', type=str, default='/mimer/NOBACKUP/groups/snic2021-7-128/nora/letitshine/codes/input_norm/norm_config.json', help='jsonfile')
+parser.add_argument('--norm_config_path', type=str, default='/codes/input_normalization/norm_config.json', help='jsonfile')
 #parser.add_argument('--analyse_inputs', action='store_true', help='Analyze_inputs')
 parser.add_argument('--input_norm', type=str, default = 'zscore')
-
 parser.add_argument('--BF_aug', nargs="*", type=str, default=None, help='[posterize, solarize, gaussian, colorjitter, brightness_contrast,sharpness, autocontrast, erase]')
 parser.add_argument('--FL_aug',  nargs="*", type=str, default=None, help='[colorjitter, gaussian, noise, intensity_shift, erase]')
 
 
-parser.add_argument('--inference_pth', type=str, default = '/mimer/NOBACKUP/groups/snic2021-7-128/nora/logs/Baseline_P123_20_ResNet18_Early Fusion/resnet18_multimodal_early_fusion', help='Path to pth')
+parser.add_argument('--inference_pth', type=str, default = '/logs/Baseline_P123_20_ResNet18_Early Fusion/resnet18_multimodal_early_fusion', help='Path to pth')
 parser.add_argument('--not_masked_channels', type=str, default=None, help='[0123]')
 
 def run_cv_inference(args):
@@ -96,19 +90,14 @@ def run_cv_inference(args):
 
     all_metrics = defaultdict(list)
 
-    if args.server == 'mida1':
-        log_dir = '/home/nora/data2_nora'
-    elif args.server == 'alvis':
-        log_dir = '/mimer/NOBACKUP/groups/snic2021-7-128/nora'
-    else:
-        log_dir = '/home/nora/work_nora'  # mida2
+    log_dir = '/home/nora'  # mida2
 
     if args.inference_pth is None:
         print("Error: --inference_pth is required but was not provided.")
         sys.exit(1)
 
     if args.fold is not None:
-        folds_to_run = [args.fold]  # Convert to 1-based if needed
+        folds_to_run = [args.fold] 
     else:
         folds_to_run = [0, 1, 2]  # All folds
 

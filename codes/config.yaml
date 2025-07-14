@@ -1,9 +1,9 @@
-program: main.py
+program: main.py #config for wandb sweep
 
-method: random  # oder bayes, wenn du willst
+method: random  #bayes
 
 metric:
-  name: Train/Loss #Validation/Loss  # Du loggst val loss und test f1 separat -> hier sinnvoll Val Loss
+  name: Train/Loss #Validation/Loss  
   goal: minimize
 
 project: alvis-sweep-loss
