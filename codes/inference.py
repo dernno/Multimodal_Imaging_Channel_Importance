@@ -90,7 +90,7 @@ def run_cv_inference(args):
 
     all_metrics = defaultdict(list)
 
-    log_dir = '/home/nora'  # mida2
+    log_dir = '/home/nora' 
 
     if args.inference_pth is None:
         print("Error: --inference_pth is required but was not provided.")
@@ -99,7 +99,7 @@ def run_cv_inference(args):
     if args.fold is not None:
         folds_to_run = [args.fold] 
     else:
-        folds_to_run = [0, 1, 2]  # All folds
+        folds_to_run = [0, 1, 2] 
 
     for i in folds_to_run:#3  # Fold 1 to Fold 3
         print(f"\n======\n\n\n")
