@@ -1,4 +1,3 @@
-# MA_Nora_Channel_Importance
 Implementation for MA Thesis: Evaluating channel importance in CNN-based classification of oral cancer cytology using perfectly aligned brightfield–fluorescence image pairs from Pap-stained whole-slide images (patch size 256 × 256 pixel).
 
 MIDA Group. LetItShine: Multimodal image analysis codebase, https://github.com/MIDA-group/LetItShine serves as the initial codebase and is substantially extended to incorporate methodological improvements (patient weighting, dynamic class weighting, as well as channel importance analysis tools (ablation, occlusion, integrated-gradients)).
